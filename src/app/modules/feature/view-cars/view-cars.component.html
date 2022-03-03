@@ -1,0 +1,73 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+           
+        </ng-template> 
+
+         <ng-template pTemplate="right">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="createNewCar()"></button>
+            <!-- <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelecteduserCars()" [disabled]="!selecteduserCars || !selecteduserCars.length"></button> -->
+        </ng-template> 
+    </p-toolbar>
+
+    <p-table #dt [value]="userCars" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']"
+        [(selection)]="selectedCars" [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">List of cars</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <!-- <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." /> -->
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="userId">Owner <p-sortIcon field="userId"></p-sortIcon></th>
+                <th pSortableColumn="manufacturer">Manufacturer <p-sortIcon field="manufacturer"></p-sortIcon></th>
+                <th pSortableColumn="type">Type <p-sortIcon field="type"></p-sortIcon></th>
+                <th pSortableColumn="mileageMeter">Mileage Meter <p-sortIcon field="mileageMeter"></p-sortIcon></th>
+                <th pSortableColumn="engineType">Engine Type <p-sortIcon field="engineType"></p-sortIcon></th>
+                <th pSortableColumn="engineCapacity">Engine Capacity <p-sortIcon field="engineCapacity"></p-sortIcon></th>
+                <th pSortableColumn="isDeleted">Is Deleted? <p-sortIcon field="isDeleted"></p-sortIcon></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-car>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="car"></p-tableCheckbox>
+                </td>
+                <td>{{car.userId}}</td>
+                <td>{{car.manufacturer}}</td>
+                <td>{{car.type}}</td>
+                <td>{{car.mileageMeter}}</td>
+                <td>{{car.engineType}}</td>
+                <td>{{car.engineCapacity}}</td>
+                <td>{{car.isDeleted}}</td>
+
+            
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-alert mr-2" (click)="editCar(car)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2" (click)="deleteCar(car)" ></button>
+                </td> 
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{userCars ? userCars.length : 0 }} cars.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+<app-manage-cars [sharedCar]="car" [selectedCarDialog]="selectedCarDialog" [createCarDialog]="createCarDialog" (updateCarDialogValue)="getDialogValue($event)"></app-manage-cars>
+
+
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

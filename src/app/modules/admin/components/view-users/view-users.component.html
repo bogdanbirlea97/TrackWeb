@@ -1,0 +1,73 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+           
+        </ng-template> 
+
+         <ng-template pTemplate="right">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="createNewUser()"></button>
+            <!-- <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelecteduserCars()" [disabled]="!selecteduserCars || !selecteduserCars.length"></button> -->
+        </ng-template> 
+    </p-toolbar>
+
+    <p-table #dt [value]="listOfUsers" [rows]="10" [paginator]="true" [globalFilterFields]="['name','country.name','representative.name','status']"
+        [(selection)]="selectedUsers" [rowHover]="true" dataKey="id"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h5 class="p-m-0">List of users</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <!-- <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." /> -->
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="id">Id <p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="firstName">First Name <p-sortIcon field="firstName"></p-sortIcon></th>
+                <th pSortableColumn="lastName">Last Name <p-sortIcon field="lastName"></p-sortIcon></th>
+                <th pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+                <th pSortableColumn="birtDate">Birth Date <p-sortIcon field="birtDate"></p-sortIcon></th>
+                <th pSortableColumn="isActive">Is Deleted? <p-sortIcon field="isActive"></p-sortIcon></th>
+                
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="user"></p-tableCheckbox>
+                </td>
+                <td>{{user.id}}</td>
+                <td>{{user.firstName}}</td>
+                <td>{{user.lastName}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.birthDate}}</td>
+                <td>{{user.isDeleted}}</td>
+            
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-alert mr-2" (click)="editUser(user)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-mr-2" (click)="deleteUser(user)" ></button>
+                </td> 
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                In total there are {{listOfUsers ? listOfUsers.length : 0 }} users.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+<app-manage-users [sharedUser]="user" [selectedUserDialog]="selectedUserDialog" [createUserDialog]="createUserDialog" (updateUserDialogValue)="getDialogValue($event)">
+   
+
+</app-manage-users>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

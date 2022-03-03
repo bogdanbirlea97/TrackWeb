@@ -1,0 +1,84 @@
+<p-dialog [(visible)]="selectedCarDialog" [style]="{width: '450px'}" header="Update car" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="manufacturer">Manufacturer</label>
+            <input type="text" pInputText id="manufacturer" [(ngModel)]="sharedCar.manufacturer" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.manufacturer">Manufacturer is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="type">Type</label>
+            <input type="text" pInputText id="type" [(ngModel)]="sharedCar.type" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.type">Type is required.</small>
+        </div>
+      
+        <div class="p-field">
+            <label for="mileageMeter">Mileage Meter</label>
+            <input type="text" pInputText id="mileageMeter" [(ngModel)]="sharedCar.mileageMeter" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.mileageMeter">Mileage Meter is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="engineType">Engine Type</label>
+            <input type="text" pInputText id="engineType" [(ngModel)]="sharedCar.engineType" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.engineType">Engine type is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="engineCapacity">Engine Capacity</label>
+            <input type="text" pInputText id="engineCapacity" [(ngModel)]="sharedCar.engineCapacity" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.engineType">Engine Capacity is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="isDeleted">Is Deleted?</label>
+            <input type="text" pInputText id="isDeleted" [(ngModel)]="sharedCar.isDeleted" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.isDeleted">Engine Capacity is required.</small>
+        </div>
+    </ng-template>
+    
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+
+</p-dialog>
+<p-dialog [(visible)]="createCarDialog" [style]="{width: '450px'}" header="Create car" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="userId" [hidden]="isInputHiddenForThisTypeOfUser" >Owner ID</label>
+            <input type="text" [hidden]="isInputHiddenForThisTypeOfUser"  pInputText id="userId" [(ngModel)]="sharedCar.userId" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.userId">Manufacturer is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="manufacturer">Manufacturer</label>
+            <input type="text" pInputText id="manufacturer" [(ngModel)]="sharedCar.manufacturer" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.manufacturer">Manufacturer is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="type">Type</label>
+            <input type="text" pInputText id="type" [(ngModel)]="sharedCar.type" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.type">Type is required.</small>
+        </div>
+      
+        <div class="p-field">
+            <label for="mileageMeter">Mileage Meter</label>
+            <input type="text" pInputText id="mileageMeter" [(ngModel)]="sharedCar.mileageMeter" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.mileageMeter">Mileage Meter is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="engineType">Engine Type</label>
+            <input type="text" pInputText id="engineType" [(ngModel)]="sharedCar.engineType" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.engineType">Engine Type is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="engineCapacity">Engine Capacity</label>
+            <input type="text" pInputText id="engineCapacity" [(ngModel)]="sharedCar.engineCapacity" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedCar.engineType">Engine Capacity is required.</small>
+        </div>
+        
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+    
+
+</p-dialog>
+<p-toast></p-toast>

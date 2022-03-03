@@ -1,0 +1,35 @@
+<div *ngIf="isNormalUser" class="layout-dashboard">
+
+        <div class="grid">
+            <div class="col-12 lg:col-6 xl:col-3">
+                <div class="overview-box sales">
+                    <span class="overview-title pi pi-car"> Personal cars</span>
+                    <div class="overview-numbers">
+                       {{carCounter}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
+<div  *ngIf="!isNormalUser" class="layout-dashboard">
+
+        <div class="grid">
+            <div class="col-12 lg:col-6 xl:col-3">
+                <div class="overview-box views">
+                    <span class="overview-title pi pi-car"> Total users</span>
+                    <div class="overview-numbers">
+                       {{totalUsers}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 lg:col-6 xl:col-3">
+                <div class="overview-box sales">
+                    <span class="overview-title pi pi-car"> Total cars</span>
+                    <div class="overview-numbers">
+                       {{totalCars}}
+                    </div>
+                </div>
+            </div>
+       </div>
+</div>

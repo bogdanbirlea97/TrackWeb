@@ -1,0 +1,75 @@
+<p-dialog [(visible)]="selectedUserDialog" [style]="{width: '450px'}" header="Update user" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="firstName">First Name</label>
+            <input type="text" pInputText id="FirstName" [(ngModel)]="sharedUser.firstName" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedUser.firstName">First Name is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="lastName">Last Name</label>
+            <input type="text" pInputText id="lastName" [(ngModel)]="sharedUser.lastName" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedUser.lastName">Last Name is required.</small>
+        </div>
+      
+        <div class="p-field">
+            <label for="email">Email</label>
+            <input type="text" pInputText id="email" [(ngModel)]="sharedUser.email" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedUser.email">Email is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="birthDate">Birth Date</label>
+            <input type="text" pInputText id="birthDate" [(ngModel)]="sharedUser.birthDate" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedUser.birthDate">Birth Date is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="password">Password</label>
+            <input type="text" pInputText id="password" [(ngModel)]="sharedUser.password" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedUser.birthDate">Password is required.</small>
+        </div>
+       
+    </ng-template>
+    
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+
+</p-dialog>
+<p-dialog [(visible)]="createUserDialog" [style]="{width: '450px'}" header="Create user" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="firstName">First Name</label>
+            <input type="text" pInputText id="FirstName" [(ngModel)]="sharedUser.firstName" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedUser.firstName">First Name is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="lastName">Last Name</label>
+            <input type="text" pInputText id="lastName" [(ngModel)]="sharedUser.lastName" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedUser.lastName">Last Name is required.</small>
+        </div>
+      
+        <div class="p-field">
+            <label for="email">Email</label>
+            <input type="text" pInputText id="email" [(ngModel)]="sharedUser.email" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedUser.email">Email is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="birthDate">Birth Date</label>
+            <input type="text" pInputText id="birthDate" [(ngModel)]="sharedUser.birthDate" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedUser.birthDate">Birth Date is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="password">Password</label>
+            <input type="text" pInputText id="password" [(ngModel)]="sharedUser.password" required autofocus />
+            <small class="p-invalid" *ngIf="submitted && !sharedUser.birthDate">Password is required.</small>
+        </div>
+        
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+    
+
+</p-dialog>
+<p-toast></p-toast>

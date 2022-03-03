@@ -1,0 +1,37 @@
+<div class="login-body">
+    <div class="login-panel"></div>
+
+    <div class="login-content">
+        <img src="assets/layout/images/logo-black.png" alt="babylon-layout"/>
+
+        <h1><span>SIGN IN</span> TO BABYLON</h1>
+        <p>Welcome, please use the form to sign-in.</p>
+        <form [formGroup]="loginForm" class="login-container" (ngSubmit)="onSubmit()">
+  
+        <div class="login-input-wrapper">
+            <p [ngClass]="{ 'has-error': isSubmitted && formControls.Email.errors }">
+            <input type="text" autocomplete="off" placeholder="Username" formControlName="Email"
+             pInputText>
+            <i class="pi pi-user"></i>
+            </p>
+        </div>
+
+        <div class="login-input-wrapper">
+           <p [ngClass]="{ 'has-error': isSubmitted && formControls.Password.errors }">  
+            <input type="password" autocomplete="off" placeholder="Password" formControlName="Password"
+            pInputText>
+            <i class="pi pi-lock"></i>
+           
+        </div>
+        <div class="login-input-wrapper">
+            <div *ngIf="eValid">
+                <p-message severity="{{type}}" text="{{message}}" styleClass="mr-2"></p-message>
+            </div>
+        </div>
+        </form>
+   
+       
+        <button [routerLink]="['/']"  pButton type="button" label="Sign In" (click)="onSubmit()"></button>
+    </div>
+
+</div>
