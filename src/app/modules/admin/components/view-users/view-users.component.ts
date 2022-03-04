@@ -33,13 +33,14 @@ export class ViewUsersComponent implements OnInit {
     let connectedUser = JSON.parse(JSON.stringify(this.currentUser));
     this.userService.getAllUsers()
       .subscribe(
-        (response) => {                           //next() callback
+        (response) => {                           
           this.listOfUsers = response;
+          
         },
-        (error) => {                              //error() callback
+        (error) => {                              
          
         },
-        () => {                                   //complete() callback
+        () => {                                 
         
         })
   }

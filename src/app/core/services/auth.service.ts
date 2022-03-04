@@ -26,10 +26,9 @@ login(loginUser:Login) {
   let password =JSON.parse(JSON.stringify(loginUser)).Password;
     return this.http.post<any>(`${AUTH_API}/Login`, { email,password })
         .pipe(map(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user.results.result));
-            this.currentUserSubject.next(user.results.result);
-            return user.results.result;
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            this.currentUserSubject.next(user);
+            return user;
         }));
 }
 }

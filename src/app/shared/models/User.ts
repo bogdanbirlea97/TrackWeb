@@ -4,7 +4,7 @@ export interface  User {
     LastName?:string;
     Email?: string; 
     Password?:string;
-    BirthDate?:string;
+    BirthDate?:Date;
     IsDeleted?:boolean;
     IsAdmin?:boolean;
 

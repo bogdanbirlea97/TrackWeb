@@ -16,15 +16,18 @@
             <input type="text" pInputText id="email" [(ngModel)]="sharedUser.email" required autofocus />
             <small class="p-invalid" *ngIf="submitted && !sharedUser.email">Email is required.</small>
         </div>
+       
         <div class="p-field">
-            <label for="birthDate">Birth Date</label>
-            <input type="text" pInputText id="birthDate" [(ngModel)]="sharedUser.birthDate" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !sharedUser.birthDate">Birth Date is required.</small>
-        </div>
+            <div class="ui-g-12 ui-md-6">
+                <label for="birthDate">Birth Date</label>
+                <p-calendar placeholder="Start Date" name="atarih" #atarih="ngModel" [(ngModel)]="sharedUser.birthDate"  [showIcon]="true" [monthNavigator]=true appendTo="body" required></p-calendar>
+               </div>
+            </div>
+       
         <div class="p-field">
             <label for="password">Password</label>
             <input type="text" pInputText id="password" [(ngModel)]="sharedUser.password" required autofocus />
-            <small class="p-invalid" *ngIf="submitted && !sharedUser.birthDate">Password is required.</small>
+            <small class="p-invalid" *ngIf="submitted && !sharedUser.password">Password is required.</small>
         </div>
        
     </ng-template>
@@ -58,6 +61,13 @@
             <input type="text" pInputText id="birthDate" [(ngModel)]="sharedUser.birthDate" required autofocus />
             <small class="p-invalid" *ngIf="submitted && !sharedUser.birthDate">Birth Date is required.</small>
         </div>
+        <div class="p-field">
+            <div class="ui-g-12 ui-md-6">
+                <label for="birthDate">Birth Date</label>
+                <p-calendar placeholder="Start Date" name="atarih" #atarih="ngModel" [(ngModel)]="sharedUser.birthDate" dateFormat="mm-dd-yy" [showIcon]="true" [monthNavigator]=true appendTo="body" required></p-calendar>
+               </div>
+            </div>
+       
         <div class="p-field">
             <label for="password">Password</label>
             <input type="text" pInputText id="password" [(ngModel)]="sharedUser.password" required autofocus />

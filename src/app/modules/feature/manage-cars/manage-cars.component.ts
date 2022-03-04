@@ -25,11 +25,11 @@ export class ManageCarsComponent implements OnInit {
      let connectedUser = JSON.parse(JSON.stringify(this.currentUser));
 
     if(connectedUser.isAdmin){
-      console.log("E FALS BETAS PULA")
+      
       this.isInputHiddenForThisTypeOfUser = false;
     }
     else{
-      console.log("NU E FALS BETAS PULA")
+
       this.isInputHiddenForThisTypeOfUser=true;
     }
   }

@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
     .pipe(first())
     .subscribe(
         data => {
-          console.log(data)
           this.type = "success"; // color of severity
           this.message="Login successfull"; // displayed message
          if(data.isAdmin){
@@ -65,7 +64,6 @@ export class LoginComponent implements OnInit {
            this.type = "error";// color of severity
            this.message="Email or password incorect"; // displayed message
            this.showViaService();
-           console.log(error);
         });
   }
 
